@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Select</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(40, 40, 60, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(60, 40, 40, 0.3) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 50px 40px;
+            background: rgba(10, 10, 10, 0.7);
+            border: 2px solid rgba(100, 100, 100, 0.3);
+            border-radius: 10px;
+            box-shadow: 
+                0 0 30px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            max-width: 800px;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #d4d4d4;
+            text-shadow: 
+                0 0 10px rgba(200, 200, 200, 0.5),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin-bottom: 10px;
+            letter-spacing: 6px;
+        }
+
+        .subtitle {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .level-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid #444;
+            border-radius: 8px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .level-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .level-card:hover::before {
+            left: 100%;
+        }
+
+        .level-card:hover {
+            border-color: #888;
+            background: rgba(30, 30, 30, 0.9);
+            transform: translateY(-5px);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.7),
+                inset 0 0 20px rgba(255, 255, 255, 0.05);
+        }
+
+        .level-card.locked {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .level-card.locked:hover {
+            transform: none;
+            background: rgba(20, 20, 20, 0.8);
+            border-color: #444;
+        }
+
+        .level-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+        }
+
+        .level-name {
+            font-size: 1.5em;
+            color: #d4d4d4;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .level-status {
+            font-size: 0.9em;
+            color: #888;
+            letter-spacing: 1px;
+        }
+
+        .level-card.completed .level-status {
+            color: #4CAF50;
+        }
+
+        .level-card.locked .level-status {
+            color: #666;
+        }
+
+        .back-btn {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            padding: 15px 40px;
+            background: rgba(30, 30, 30, 0.9);
+            color: #999;
+            border: 2px solid #555;
+            border-radius: 5px;
+            cursor: pointer;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .back-btn:hover {
+            background: rgba(40, 40, 40, 0.9);
+            border-color: #777;
+            color: #ccc;
+            transform: translateY(-2px);
+        }
+
+        .back-btn:active {
+            transform: translateY(0);
+        }
+
+        .scanline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.05);
+            animation: scan 4s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+
+        .lock-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2em;
+            color: #4CAF50;
+        }
+
+        .progress-info {
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanline"></div>
+    <div class="container">
+        <h1>SELECT LEVEL</h1>
+        <div class="subtitle">Choose your escape room</div>
+        
+        <div class="levels-grid">
+            <!-- Bedroom - Always available -->
+            <div class="level-card" onclick="window.location.href='bedroom.html'" id="level-bedroom">
+                <div class="level-icon">🛏️</div>
+                <div class="level-name">Bedroom</div>
+                <div class="level-status">Available</div>
+            </div>
+
+            <!-- Kitchen - Unlocked after Bedroom -->
+            <div class="level-card locked" id="level-kitchen">
+                <div class="level-icon">🔪</div>
+                <div class="level-name">Kitchen</div>
+                <div class="level-status">Complete Bedroom First</div>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <!-- Living Room - Unlocked after Kitchen -->
+            <div class="level-card locked" id="level-living-room">
+                <div class="level-icon">🛋️📺</div>
+                <div class="level-name">Living Room</div>
+                <div class="level-status">Complete Kitchen First</div>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <!-- Secret Room - Unlocked after Living Room -->
+            <div class="level-card locked" id="level-secretRoom">
+                <div class="level-icon">🕯️💀</div>
+                <div class="level-name">Secret Room</div>
+                <div class="level-status">Complete Living Room First</div>
+                <span class="lock-icon">🔒</span>
+            </div>
+        </div>
+
+        <div class="progress-info" id="progressInfo">
+            Complete levels to unlock more rooms
+        </div>
+
+        <button class="back-btn" onclick="window.location.href='index.html'">
+            Back to Menu
+        </button>
+        
+        <button class="back-btn" onclick="resetProgress()" style="margin-left: 10px; background: rgba(100, 30, 30, 0.9);">
+            Reset Progress
+        </button>
+    </div>
+
+    <script>
+        // Level progression logic
+        const levelOrder = ['bedroom', 'kitchen', 'living-room', 'secretRoom'];
+        
+        function updateLevelSelect() {
+            let lastCompletedLevel = -1;
+            
+            // Find the last completed level
+            for (let i = 0; i < levelOrder.length; i++) {
+                const level = levelOrder[i];
+                const isCompleted = localStorage.getItem(`level_${level}_completed`) === 'true';
+                
+                if (isCompleted) {
+                    lastCompletedLevel = i;
+                    const card = document.getElementById(`level-${level}`);
+                    
+                    // Mark as completed
+                    card.classList.add('completed');
+                    card.classList.remove('locked');
+                    
+                    // Remove lock icon
+                    const lockIcon = card.querySelector('.lock-icon');
+                    if (lockIcon) lockIcon.remove();
+                    
+                    // Add checkmark
+                    if (!card.querySelector('.checkmark')) {
+                        card.innerHTML += '<span class="checkmark">✓</span>';
+                    }
+                    
+                    // Update status
+                    card.querySelector('.level-status').textContent = 'Completed';
+                    
+                    // Set click handler
+                    card.onclick = function() {
+                        window.location.href = `${level}.html`;
+                    };
+                    card.style.cursor = 'pointer';
+                }
+            }
+            
+            // Unlock the next level after the last completed one
+            const nextLevelIndex = lastCompletedLevel + 1;
+            if (nextLevelIndex < levelOrder.length) {
+                const nextLevel = levelOrder[nextLevelIndex];
+                const card = document.getElementById(`level-${nextLevel}`);
+                
+                card.classList.remove('locked');
+                card.querySelector('.lock-icon').remove();
+                card.querySelector('.level-status').textContent = 'Available';
+                
+                card.onclick = function() {
+                    window.location.href = `${nextLevel}.html`;
+                };
+                card.style.cursor = 'pointer';
+            }
+            
+            // Update progress info
+            const progressInfo = document.getElementById('progressInfo');
+            const completedCount = lastCompletedLevel + 1;
+            const totalCount = levelOrder.length;
+            progressInfo.textContent = `Progress: ${completedCount}/${totalCount} levels completed`;
+        }
+        
+        function resetProgress() {
+            if (confirm('Are you sure you want to reset all progress? This will lock all levels except the first one.')) {
+                const levels = ['bedroom', 'kitchen', 'living-room', 'secretRoom'];
+                levels.forEach(level => {
+                    localStorage.removeItem(`level_${level}_completed`);
+                    localStorage.removeItem(`level_${level}_completed_time`);
+                });
+                location.reload();
+            }
+        }
+        
+        // Initialize level select on page load
+        document.addEventListener('DOMContentLoaded', updateLevelSelect);
+    </script>
+</body>
+</html>

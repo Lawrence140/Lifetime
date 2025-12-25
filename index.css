@@ -1,0 +1,75 @@
+#paperUI {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: black;
+    font-family: sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    padding: 30px 40px;
+    border-radius: 12px;
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    gap: 25px; /* <-- this creates spacing between numbers */
+    box-shadow: 0 0 20px rgba(255,255,255,0.8);
+}
+
+.paperNumber {
+    min-width: 30px;       /* keeps numbers evenly spaced */
+    text-align: center;
+}
+
+#minimap {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 200px;
+    height: 200px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    z-index: 100;
+}
+
+body { margin: 0; }
+
+/* Timer in top-right */
+#timer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-family: monospace;
+    font-size: 24px;
+    color: white;
+    background: rgba(0,0,0,0.7);
+    padding: 8px 14px;
+    border-radius: 8px;
+    z-index: 2000;
+}
+
+/* Game Over overlay */
+#gameOver {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Arial, sans-serif;
+    font-size: 48px;
+    color: red;
+    background: rgba(0,0,0,0.8);
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    display: none;
+    z-index: 3000;
+}
+
+#gameOver button {
+    margin-top: 20px;
+    font-size: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}

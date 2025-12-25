@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controls</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(40, 40, 60, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(60, 40, 40, 0.3) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px;
+            background: rgba(10, 10, 10, 0.7);
+            border: 2px solid rgba(100, 100, 100, 0.3);
+            border-radius: 10px;
+            box-shadow: 
+                0 0 30px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #d4d4d4;
+            text-shadow: 
+                0 0 10px rgba(200, 200, 200, 0.5),
+                0 0 20px rgba(150, 150, 150, 0.3),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin-bottom: 20px;
+            letter-spacing: 6px;
+            animation: flicker 3s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            41%, 43% { opacity: 0.85; }
+            45% { opacity: 0.95; }
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #888;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .controls-list {
+            text-align: left;
+            margin: 0 auto 30px auto;
+            display: inline-block;
+            font-size: 1.2em;
+            color: #d4d4d4;
+            background: rgba(30, 30, 30, 0.5);
+            padding: 24px 32px;
+            border-radius: 8px;
+            border: 1px solid rgba(100, 100, 100, 0.2);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .back-btn {
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+            padding: 12px 36px;
+            background: rgba(40, 40, 40, 0.9);
+            color: #d4d4d4;
+            border: 2px solid #666;
+            border-radius: 5px;
+            cursor: pointer;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 2px 8px rgba(0, 0, 0, 0.3),
+                inset 0 0 6px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .back-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .back-btn:hover::before {
+            width: 200px;
+            height: 200px;
+        }
+
+        .back-btn:hover {
+            background: rgba(60, 60, 60, 0.9);
+            border-color: #999;
+            color: #fff;
+            box-shadow: 
+                0 4px 15px rgba(100, 100, 100, 0.4),
+                inset 0 0 10px rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .back-btn:active {
+            transform: translateY(0);
+            box-shadow: 
+                0 2px 10px rgba(0, 0, 0, 0.5),
+                inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .scanline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.05);
+            animation: scan 4s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="scanline"></div>
+    <div class="container">
+        <h1>CONTROLS</h1>
+        <div class="subtitle">How to Play</div>
+        <div class="controls-list">
+            <strong>WASD</strong> &mdash; Move around<br>
+            <strong>SPACEBAR</strong> &mdash; Jump<br>
+            <strong>F</strong> &mdash; Toggle flashlight<br>
+            <strong>ESC</strong> &mdash; Pause game<br>
+            <strong>C</strong> &mdash; Toggle first/third person<br>
+            <strong>Click &amp; move mouse/touchpad</strong> &mdash; Rotate camera<br>
+        </div>
+        <button class="back-btn" onclick="window.location.href='index.html'">
+            <span style="position: relative; z-index: 1;">Back</span>
+        </button>
+    </div>
+</body>
+</html>

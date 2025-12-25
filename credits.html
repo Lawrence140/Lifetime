@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Credits</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./index.css" />
+  <style>
+    body { background: #050507; color: #eee; font-family: Arial, Helvetica, sans-serif; margin:0; }
+    .container { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:40px; }
+    .card { max-width:820px; width:100%; background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border-radius:12px; padding:28px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
+    h1 { color:#ffd27a; margin:0 0 10px 0; }
+    p.lead { color:#dcdcdc; margin-top:0; }
+    .credits-list { margin:18px 0 26px 0; }
+    .credits-list dt { font-weight:700; color:#ffd27a; }
+    .credits-list dd { margin:6px 0 12px 0; color:#ddd; }
+    .actions { text-align:right; }
+    .btn { padding:10px 16px; border-radius:8px; border:none; cursor:pointer; font-weight:700; }
+    .btn-primary { background:#27ae60; color:white; }
+    .btn-secondary { background:#333; color:white; margin-right:8px; }
+    footer { margin-top:18px; color:#999; font-size:13px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>Credits</h1>
+      <p class="lead">Thanks for playing. Below are a few of the contributors and acknowledgements.</p>
+
+      <dl class="credits-list">
+        <dt>Level Design & Development</dt>
+        <dd>Given Makofane</dd>
+        <dd>Molemo Mokhethi</dd>
+        <dd>Ntando Kumalo</dd>
+        <dd>Joshua Williams</dd>
+
+        <dt>3D Models & Animations</dt>
+        <dd>Joshua Williams</dd>
+        <dd>Lehlogonolo Tosa</dd>
+        <dd>Tshepo Mngomezulu</dd>
+
+        <dt>Audio</dt>
+        <dd>aurenth - green to blue (Slowed + Reverb)</dd>
+
+        <dt>Sources</dt>
+        <dd>Bookshelf: based on "Victorian Bookshelf" (https://sketchfab.com/3d-models/victorian-bookshelf-9f548046646f404782b8838ec14932f8) by Okapiguy (https://sketchfab.com/Okapiguy) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)"</dd>
+        <dd>demon: based on "Demon Sculpture - Tilt Brush" (https://sketchfab.com/3d-models/demon-sculpture-tilt-brush-2c6b2f660fb048388fe87093412c1b28) by 3Donimus (https://sketchfab.com/3Donimus) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)</dd>
+        <dd>chandelier: based on "Chandelier" (https://sketchfab.com/3d-models/chandelier-1c8a5e7069294d3e8bd9c96a4dffca62) by Dillus (https://sketchfab.com/Dillus) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)</dd>
+        <dd>Door: based on "Door Frame Fancy Tall" (https://sketchfab.com/3d-models/door-frame-fancy-tall-ba20f6922dac4002874d578000a46a2a) by GameDevMoot (https://sketchfab.com/GameDevMoot) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)</dd>
+        <dd>Throne: based on "skull throne" (https://sketchfab.com/3d-models/skull-throne-d141df7a3c9c409e938c87c51487980d) by dragunakaneTGTF (https://sketchfab.com/dragunakaneTGTF) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)</dd>
+      </dl>
+
+      <div class="actions">
+        <button id="backBtn" class="btn btn-secondary">Return to Level Select</button>
+        <button id="playAgainBtn" class="btn btn-primary">Play Again</button>
+      </div>
+
+      <footer>
+        <div>Auto-redirecting to Level Select in <span id="count">10</span> seconds...</div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // Buttons behavior
+    document.getElementById('backBtn').addEventListener('click', () => {
+      window.location.href = 'level-select.html';
+    });
+    document.getElementById('playAgainBtn').addEventListener('click', () => {
+      // Reload the living-room to play again; clear any stored timer
+      localStorage.removeItem('livingRoomEndTime');
+      sessionStorage.removeItem('livingRoomPaused');
+      window.location.href = 'living-room.html';
+    });
+
+    // Auto countdown then redirect
+    let seconds = 10;
+    const span = document.getElementById('count');
+    const iv = setInterval(() => {
+      seconds -= 1;
+      if (span) span.textContent = String(seconds);
+      if (seconds <= 0) {
+        clearInterval(iv);
+        window.location.href = 'level-select.html';
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

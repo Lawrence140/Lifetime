@@ -1,0 +1,83 @@
+<script>
+    // Level progression logic
+    const levelOrder = ['bedroom', 'kitchen', 'living-room', 'secret-room'];
+    
+    function updateLevelSelect() {
+        const completedLevels = getCompletedLevels();
+        const progressInfo = document.getElementById('progressInfo');
+        
+        // Update progress text
+        const progressPercent = Math.round((completedLevels.length / levelOrder.length) * 100);
+        progressInfo.textContent = `Progress: ${completedLevels.length}/${levelOrder.length} levels (${progressPercent}%)`;
+        
+        // Update each level card
+        levelOrder.forEach((level, index) => {
+            const card = document.getElementById(`level-${level}`);
+            const isCompleted = completedLevels.includes(level);
+            const isUnlocked = index === 0 || completedLevels.includes(levelOrder[index - 1]);
+            
+            // Remove all existing classes and icons
+            card.classList.remove('locked', 'completed');
+            const lockIcon = card.querySelector('.lock-icon');
+            const checkmark = card.querySelector('.checkmark');
+            if (lockIcon) lockIcon.remove();
+            if (checkmark) checkmark.remove();
+            
+            if (isCompleted) {
+                card.classList.add('completed');
+                card.querySelector('.level-status').textContent = 'Completed ✓';
+                card.innerHTML += '<span class="checkmark">✓</span>';
+                
+                // Update click handler for completed levels
+                card.onclick = function() {
+                    window.location.href = `${level}.html`;
+                };
+            } else if (isUnlocked) {
+                card.classList.remove('locked');
+                card.querySelector('.level-status').textContent = 'Available';
+                
+                // Update click handler for unlocked levels
+                card.onclick = function() {
+                    window.location.href = `${level}.html`;
+                };
+            } else {
+                card.classList.add('locked');
+                card.querySelector('.level-status').textContent = 'Locked';
+                card.innerHTML += '<span class="lock-icon">🔒</span>';
+                
+                // Remove click handler for locked levels
+                card.onclick = null;
+                card.style.cursor = 'not-allowed';
+            }
+        });
+    }
+    
+    function getCompletedLevels() {
+        return levelOrder.filter(level => 
+            localStorage.getItem(`level_${level}_completed`) === 'true'
+        );
+    }
+    
+    // Reset progress (for testing - remove in production)
+    function resetProgress() {
+        if (confirm('Reset all progress?')) {
+            levelOrder.forEach(level => {
+                localStorage.removeItem(`level_${level}_completed`);
+                localStorage.removeItem(`level_${level}_completed_time`);
+            });
+            updateLevelSelect();
+        }
+    }
+    
+    // Add reset button for testing (remove in final version)
+    const resetBtn = document.createElement('button');
+    resetBtn.textContent = 'Reset Progress';
+    resetBtn.className = 'back-btn';
+    resetBtn.style.marginLeft = '10px';
+    resetBtn.style.background = 'rgba(100, 30, 30, 0.9)';
+    resetBtn.onclick = resetProgress;
+    document.querySelector('.container').appendChild(resetBtn);
+    
+    // Initialize level select on page load
+    document.addEventListener('DOMContentLoaded', updateLevelSelect);
+</script>
