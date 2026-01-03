@@ -1,0 +1,465 @@
+/* styling home  */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: system-ui,sans-serif;
+    background: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+/* Transitions */
+
+/* #pageTransition {
+    position: fixed;
+    inset: 0;
+    background-image: url(assets/trans.png);
+    background-size: cover;
+    background-position: center;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+#pageTransition.active {
+    transform: translateY(0);
+    opacity: 1;
+} */
+
+
+/* Navigation bar */
+.navBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2.5rem;
+    background: rgba(59, 57, 57, 0.904);
+}
+
+.logo{
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.navLinks {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.navLinks a {
+    text-decoration: none;
+    color: rgb(250, 250, 250);
+    font-weight: 500;
+    transition: 
+        transform 0.2s ease,
+        filter 0.2s ease,
+        color 0.2s ease;
+}
+
+.navLinks a:hover {
+    color: lightblue;
+    transform: translateY(-8px) scale(1.2);
+    box-shadow: 0 4px 8px lightyellow;
+}
+
+.navLinks li:hover {
+    transform: translateY(-3px) scale(1.2);
+}
+
+.navLinks a.active {
+    color: lightgreen;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff;
+    animation: pulse 0.5s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff; }
+    100% { text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; }
+}
+
+
+
+.buttn :hover{ 
+    transform: rotate(20);
+    box-shadow: 0 4px 8px crimson;
+}
+
+.backBtn{
+    padding: 5px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.backBtn img{
+    width: 35px;
+    height: 35px;
+}
+ 
+/* main home */
+
+.hero{
+    height: calc(100vh-80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    text-align: center;
+}
+
+.profileFrame{
+    width: 200px;
+    height: 200px;
+    border-radius: 30%;
+    padding: 6px;
+    background: rgb(19, 19, 27);
+}
+
+.profileFrame img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 60%;
+    background: navy;
+}
+
+.hero h1{
+    font-size: 2.2rem;
+    margin-top: 100px;
+}
+
+.hero h1,
+.hero p {
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+
+.subtitle{
+    color: rgb(255, 255, 255);
+    font-size: 1.1rem;
+}
+
+/* background image */
+
+.pageContent {
+    flex: 1;                 
+    position: relative;
+    overflow: hidden;
+}
+
+.pageContent::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("assets/bgPic.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.14;
+    z-index: 0;
+}
+
+
+.pageContent > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* pages footer */
+
+.siteFooter {
+    margin-top: 4rem;
+    padding: 2.5rem 1rem;
+    background: #0a0a0a;
+    border-top: 1px solid #222;
+}
+
+.footerContent {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footerName {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.footerTagline {
+    margin: 0.5rem 0 1.5rem;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.footerLinks {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.footerLinks img{
+    width: 26px;
+    height: 26px;
+    display: block;
+    filter: invert(85%);
+    transition: 
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+.footerLinks a:hover img{
+    transform: translateY(-3px) scale(1.1);
+    filter: invert(75%) sepia(1) saturate(5) hue-rotate(10deg);
+}
+
+.contactLink:hover{
+    color: lightskyblue;
+}
+
+
+/* Styling the about me */
+
+.about{
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.aboutTitle{
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: 0.5em;
+}
+
+.aboutColums{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2.5rem;
+}
+
+.aboutCard{
+    display: flex;
+    flex-direction: column;
+}
+
+.aboutColums p{
+    break-inside: avoid;
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+    color: rgb(211, 212, 121);
+}
+
+
+/* styling education page */
+
+.educationHeader{
+    max-width: 900px;
+    margin: 3rem auto 2rem;
+    text-align: center;
+}
+
+.educationHeader p {
+    margin-top: 1rem;
+    color: #bbb;
+    line-height: 1.6;
+}
+
+
+.educationGrid{
+    display: grid;
+    grid-template-columns: repeat(4,minmax(200px,1fr));
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.yearCard{
+    background: #0f0f0f;
+    padding: 2rem;
+    border-top: 4px solid #f5c400;
+    transition: 
+            transform 0.25s ease,
+            box-shadow 0.25s ease,
+            border-top-color 0.25s ease;
+}
+
+.yearCard h2{
+    margin-bottom: 1rem;
+    letter-spacing: 0.15em;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.3rem;
+}
+
+.yearCard h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px; /* thickness of the bar */
+    width: 100%;
+    background: linear-gradient(90deg, #94cc2d, #fbff00);
+    border-radius: 2px;
+}
+
+.yearCard ul{
+    list-style: none;
+    padding: 0;
+} 
+
+.yearCard li{
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    color: #ddd;
+}
+
+.yearCard:hover{
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(245,196,0,0.15);
+    border-top-color: #ffd84d;
+}
+.yearCard:hover h2{
+    color: #ffd84d;
+}
+
+
+.moduleLink:hover{
+    color: lightskyblue;
+}
+
+/* skill bar */
+
+.skill {
+  margin-bottom: 1rem;
+}
+
+.skill span {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: inline-block;
+}
+
+.skillBar {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 25px;
+}
+
+.skillLevel {
+  height: 100%;
+  width: 0;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 600;
+  transition: width 1.5s ease-in-out, background 0.6s ease;
+}
+
+
+
+/* Optional: animate when the page loads */
+body.loaded .skillLevel {
+  width: var(--width);
+}
+
+
+
+/* projects page styles */
+
+.repoLink:hover{
+    color: lightskyblue;
+}
+
+.pageHeader{
+    max-width: 900px;
+    margin: 3rem auto;
+    text-align: center;
+}
+
+.projectsGrid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem 4rem;
+}
+
+.projectCard{
+    background: #0f0f0f;
+    padding: 2rem;
+    border-top: 4px solid #f5c400;
+    transition:
+     transform 0.25s ease,
+     box-shadow 0.25 ease;
+}
+
+.projectCard h3 {
+    margin-bottom: 1rem;
+    letter-spacing: 0.15rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.3rem;
+}
+
+.projectCard h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0; 
+    background: linear-gradient(90deg, #94cc2d, #fbff00);
+    border-radius: 2px;
+    transition: width 0.35s ease;
+}
+
+.projectCard:hover h3::after {
+    width: 100%;
+}
+
+
+
+.projectCard:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(245,196,0,0.15);
+}
+
+.projectCard.highlight{
+    border-top-color:#ffd84d ;
+    box-shadow: 0 25px 50px rgba(255,216,77,0.25);
+}
+
+.projectLink{
+    display: inline-block;
+    margin-top: 1rem;
+    color: #f5c400;
+    text-decoration: none;
+}
+
+/* for mobile usability must resize */
+
+@media (max-width: 900px){
+    .aboutColums{
+        column-count: 2;
+    }
+}
+
+@media (max-width: 600px){
+    .aboutColums{
+        column-count: 1;
+    }
+}

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lehlohonolo | Education</title>
+    <link rel="stylesheet" href="styling.css">
+</head>
+    <body>
+        <!-- transition -->
+        <div id="pageTransition"></div>
+
+        <!-- Navigation bar -->
+        <nav class="navBar">
+            <div class="buttn">
+                <button  class="backBtn" onclick="safeBack()" aria-label="Go back">
+                    <img src="assets/back.png" alt="Back">
+                </button>
+            </div>
+        
+            <ul class="navLinks">
+                <li><a href="index.html">Home 🏠</a></li>
+                <li><a href="aboutme.html">About ℹ️</a></li>
+                <li><a href="education.html">Education 📚</a></li>
+                <li><a href="projects.html">Projects 💻</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main body -->
+         <section id="education" class="pageContent"> 
+
+            <div class="educationHeader">
+                <h1>Education</h1>
+                <p>Here is list view of the modules I did and some technical skills
+                    I have aquired in the duration of my studies, note that some modules act as links for you to
+                    quickly access their specific projects.
+                </p>
+            </div>
+
+            <div class="educationGrid">
+
+                <div class="yearCard">
+                    <h2>First Year</h2>
+                    <ul>
+                        <li>Calculus I</li>
+                        <li>Algebra I</li>
+                        <li>Mathematical Methods and Modeling I</li>
+                        <li>Scientific Computing I</li>
+                        <li>Mechanics I</li>
+                        <li>Physics I</li>
+                        <li>Discrete Computational Structures I</li>
+                        <li>
+                            Introduction to Data Structures and Algorithms I · 
+                            <a href="projects.html?module=IDSA" class="moduleLink">👆</a>
+                        </li>
+                        <li>
+                            Introduction to Algorithm and Programming I · 
+                            <a href="projects.html?module=IAP" class="moduleLink">👆</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="yearCard">
+                    <h2>Second Year</h2>
+                    <ul>
+                        <li>Mathematical Methods and Modeling II</li>
+                        <li>Scientific Computing II</li>
+                        <li>Mechanics II</li>
+                        <li>Database Fundamentals II</li>
+                        <li>Mobile Computing II</li>
+                        <li>Computer Networks II</li>
+                        <li>
+                            Analysis of Algorithms II · 
+                           <a href="projects.html?module=Algorithms" class="moduleLink">👆</a>
+                        </li>
+                        <li>Basic Analysis II</li>
+                        <li>Multivaribale Calculus</li>
+                        <li>Abstract Mathematics II</li>
+                        <li>Linear Algebra II</li>
+                        <li>Advanced Analysis II</li>
+                        <li>Introduction to Mathematical Statistics II</li>
+                    </ul>
+                </div>
+
+                <div class="yearCard">
+                    <h2>Third Year</h2>
+                    <ul>
+                        <li>Software Design III</li>
+                        <li>Formal Languages and Automata III</li>
+                        <li>
+                            Parallel Computing III ·
+                            <a href="projects.html?module=PC" class="moduleLink">👆</a>
+                        </li>
+                        <li>
+                            Machine Learning III · 
+                            <a href="projects.html?module=ML" class="moduleLink">👆</a>
+                            </li>
+                        <li>
+                            Software Design Project III · 
+                            <a href="projects.html?module=SDP" class="moduleLink">👆</a>
+                        </li>
+                        <li>
+                            Operating System and System Programming III · 
+                            <a href="projects.html?module=OS" class="moduleLink">👆</a>
+                        </li>
+                        <li>
+                            Advanced Analysis of Algorithms III · 
+                            <a href="projects.html?module=Algorithms" class="moduleLink">👆</a>
+                        </li>
+                        <li>
+                            Computer Graphics and Visualization III · 
+                            <a href="projects.html?module=CGV" class="moduleLink">👆</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="yearCard">
+                    <h2>Technical Skills</h2>
+                    <ul>
+                        <li><strong>Languages: </strong>Python, C++, Java, C, JavaScript, TypeScript</li>
+                        <li><strong>Web: </strong>HTML, CSS, Tailwind, React</li>
+                        <li><strong>Databases: </strong>MySQL</li>
+                        <li><strong>Tools: </strong>Mathematica, Latex</li>
+                    </ul>
+                </div>
+
+                <div class="yearCard">
+                    <h2>Languages</h2>
+                    <ul>
+                        <li>
+                            <div class="skill">
+                                <span>Python</span>
+                                <div class="skillBar">
+                                    <div class="skillLevel" style="width: 85%">85%</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill">
+                                <span>C++</span>
+                                <div class="skillBar">
+                                    <div class="skillLevel" style="width: 70%">80%</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill">
+                                <span>C</span>
+                                <div class="skillBar">
+                                    <div class="skillLevel" style="width: 62%">65%</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill">
+                                <span>Java</span>
+                                <div class="skillBar">
+                                    <div class="skillLevel" style="width: 75%">75%</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill">
+                                <span>JavaScript</span>
+                                <div class="skillBar">
+                                    <div class="skillLevel" style="width: 60%">60%</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="yearCard">
+                    <h2>Web(Tools)</h2>
+                    <ul>
+                        <li>
+                            <div class="skill">
+                                <span>HTML</span>
+                                <div class="skillBar">
+                                    <div class="skillLevel" style="width: 90%">90%</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill">
+                                <span>CSS</span>
+                                <div class="skillBar">
+                                    <div class="skillLevel" style="width: 80%">80%</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill">
+                                <span>React</span>
+                                <div class="skillBar">
+                                    <div class="skillLevel" style="width: 62%">62%</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="yearCard">
+                    <h2>Databases</h2>
+                    <ul>
+                        <li>
+                            <div class="skill">
+                                <span>Firebase</span>
+                                <div class="skillBar">
+                                    <div class="skillLevel" style="width: 60%">60%</div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="skill">
+                                <span>MongoDB</span>
+                                <div class="skillBar">
+                                    <div class="skillLevel" style="width: 68%">68%</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill">
+                                <span>Relational MySQL</span>
+                                <div class="skillBar">
+                                    <div class="skillLevel" style="width: 81%">81%</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="yearCard">
+                    <h2>Tools</h2>
+                    <ul>
+                        <li>
+                            <div class="skill">
+                                <span>Mathematica</span>
+                                <div class="skillBar">
+                                    <div class="skillLevel" style="width: 60%">57%</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill">
+                                <span>Latex</span>
+                                <div class="skillBar">
+                                    <div class="skillLevel" style="width: 65%">65%</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+         </section>
+         <script src="script.js"></script>
+    </body>
+    <footer class="siteFooter">
+        <div class="footerContent">
+            <p class="footerName">Lehlohonolo Lawrence Tosa</p>
+            <p class="footertagline">
+                Computer Science Gradiate · Software Enginner · AI Enginner · Database Enginner <br> 
+                Contact me!
+            </p>
+            <br>
+            <div class="footerLinks">
+                <a href="https:/github.com/Lawrence140/Lifetime" 
+                    target="_blank" 
+                    aria-label="GitHub" 
+                    class="contactLink">
+                    <img src="assets/github.png" alt="GitHub">
+                </a>
+                
+                <a href="https://www.linkedin.com/in/lehlohonolo-tosa-309170261" 
+                    target="_blank" 
+                    aria-label="LinkedIn" 
+                    class="contactLink">
+                    <img src="assets/linkedin.png" alt="LinkedIn">
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hloni9310@gmail.com&su=Portfolio%20Contact"
+                    target="_blank"
+                    aria-label="Gmail"
+                    class="contactLink">
+                    <img src="assets/gmail.png" alt="Gmail">
+                </a>
+                <a href="https://wa.me/27815102712"
+                    class="contactLink"
+                    target="_blank"
+                    aria-label="Call me">
+                    <img src="assets/phone.png" alt="Phone">
+                </a>
+        </div>
+        </div>
+    </footer>
+</html>
