@@ -1,12 +1,15 @@
-# Data Structures in C++ 🖥️📚
+# 📦 Data Structures
 
-This branch contains my C++ implementations of fundamental data structures.  
-It's a practical collection to demonstrate understanding and hands-on coding skills.  
+Core data structures implemented from scratch to understand their internal behavior and performance trade-offs.
 
-## Implemented Data Structures
-- **Array** – Basic array operations  
-- **Linked List** – Singly and doubly linked lists  
-- **Stack** – LIFO data structure  
-- **Queue** – FIFO data structure  
-- **Circular Array / Circular Queue**  
-- **Binary Search Tree (BST)** – Node-based tree structure  
+## 🧠 Covered Concepts
+- Arrays
+- Linked Lists
+- Stacks & Queues
+- Trees
+
+## 🛠 Tech Stack
+- C++ / Java / Python
+
+## 🎯 Goal
+Strengthen algorithmic thinking and low-level problem-solving skills.
