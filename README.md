@@ -9,7 +9,7 @@ Core data structures implemented from scratch to understand their internal behav
 - Trees
 
 ## 🛠 Tech Stack
-- C++ / Java / Python
+- C++
 
 ## 🎯 Goal
 Strengthen algorithmic thinking and low-level problem-solving skills.
