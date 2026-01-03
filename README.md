@@ -26,7 +26,6 @@ Welcome to my personal online CV! This project showcases my skills, education, a
 3. Explore all pages and sections!  
 
 ## Future Plans 🚀
-- Add a contact form with email integration.  
 - Include live demos for projects.  
 - Possibly make a single-page app version with smooth transitions.  
 
